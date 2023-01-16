@@ -1,35 +1,25 @@
 
-import React, {useEffect, useState} from 'react';
-import './App.css';
+import React from 'react';
 import type {} from '@mui/lab/themeAugmentation';
-import getArticle from './utils/getArticle';
-import type  { Article } from './types/Article';
-import CardComponent from './components/CardComponent';
+import MainPage from './pages/main';
+import { Box } from '@mui/system';
+import { Route, Routes } from 'react-router-dom';
+import DetaitArticle from './pages/DetaitArticle';
 
 function App() {
-  const [data, setData] = useState<Article[]>([]);
-
-  const loadData = () => {
-    getArticle<Article[]>().then((response) => {
-      setData(response);
-    }).catch(error => console.log(error));
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  console.log(data);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>Peremoga</div>
-        {data.length && data.map(article => (
-          <CardComponent {...article} key={article.id} />
-        ))}
-      </header>
-    </div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/:articleId' element={<DetaitArticle />} />
+      </Routes>
+    </Box>
   );
 }
 
