@@ -25,7 +25,6 @@ const DetaitArticle = () => {
     loadArticle();
   }, []);
 
-  console.log(article?.imageUrl);
   return (
     <Box
       width='100%'

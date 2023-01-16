@@ -11,7 +11,6 @@ const Hightligth:React.FC<Props> = ({str, query}) => {
     return (<>{str}</>);
   }
   const words = str.split('');
-  console.log([selected, selected + query.length]);
   const result = words.map((word, index) => {
     if (index >= selected && index < selected + query.length) {
       return (
@@ -29,7 +28,6 @@ const Hightligth:React.FC<Props> = ({str, query}) => {
     return word;
   });
 
-  console.log(result);
   return (
     <>
       {result}
